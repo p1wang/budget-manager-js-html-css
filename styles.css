@@ -1,0 +1,180 @@
+/* clean up */
+* {
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+input {
+  outline: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* budget manager */
+
+.expense-section {
+  max-width: 40rem;
+  min-width: 22rem;
+  margin: 10rem auto 0;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: white;
+}
+
+.expense-form {
+  padding: 1rem;
+  background-color: #34be82;
+  border-radius: 5px 5px 0 0;
+}
+
+/* expenses form */
+.form-control {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.form-input-container {
+  flex: 1;
+  display: flex;
+}
+
+.form-input-container label {
+  display: flex;
+  align-items: center;
+  margin-right: 0.2rem;
+}
+
+#time-period {
+  border: 0;
+  outline: 0;
+  margin-left: 1rem;
+}
+
+#expense-title-input {
+  flex: 1;
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+}
+
+#expense-amount-input,
+#budget-amount-input {
+  width: 50px;
+  padding: 0.5rem;
+}
+
+/* expense list */
+
+.expense-container {
+  padding: 1rem;
+}
+.expense-item-content {
+  flex: 1;
+}
+
+.expense-item-content p {
+  padding: 2px;
+  margin: 0;
+}
+
+.expense-item-content p:first-child {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.expense-item-content p:last-child {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.expense-title {
+  text-align: center;
+}
+
+.expense-item {
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  background-color: #f2f5f8;
+  margin: 0.5rem;
+}
+
+.btn-container {
+  display: flex;
+  /* gap: 1rem; */
+  align-items: center;
+}
+
+.edit-btn {
+  color: green;
+}
+.delete-btn {
+  color: red;
+}
+
+.edit-btn,
+.delete-btn {
+  opacity: 60%;
+  padding: 1rem;
+  background-color: #f2f5f8;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  opacity: 100%;
+}
+
+.submit-btn,
+.clear-btn {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.submit-btn:hover {
+  color: rgba(0, 128, 0, 0.8);
+}
+
+.clear-btn:hover {
+  color: rgba(255, 0, 0, 0.8);
+  /* border: 1px solid black; */
+}
+
+.clear-btn {
+  display: block;
+  margin: auto;
+}
+
+/* expenses summary */
+.expenses-summary {
+  padding: 1rem;
+}
+
+#expense-total {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+@media screen and (max-width: 400px) {
+  .form-control {
+    flex-direction: column;
+  }
+  .expense-section {
+    margin: 1rem auto 0;
+  }
+  /* .submit-btn {
+    width: max-content;
+    align-self: center;
+  } */
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v6.1.1/css/all.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <title>Budget Manager</title>
+  </head>
+  <body>
+    <section class="expense-section">
+      <!-- form -->
+      <form class="expense-form">
+        <h1 class="expense-title">Budget Manager</h1>
+        <div class="form-control">
+          <div class="form-input-container">
+            <input
+              type="text"
+              id="expense-title-input"
+              placeholder="Enter your expenses"
+            />
+            <label for="expense-amount-input">$</label>
+            <input type="number" id="expense-amount-input" placeholder="0" />
+            <!-- select -->
+            <select name="time-period" id="time-period">
+              <option value="monthly">Monthly</option>
+              <option value="yearly">Yearly</option>
+            </select>
+          </div>
+          <button type="submit" class="submit-btn">submit</button>
+        </div>
+      </form>
+
+      <!-- list -->
+      <div class="expense-container">
+        <div class="expense-list">
+          <!-- example -->
+          <!-- <div class="expense-item">
+            <span class="expense-item-content">
+              <p>Car insurance</p>
+              <p>$1500 / year</p></span
+            >
+            <div class="btn-container">
+              <button class="edit-btn" type="button">
+                <i class="fa-solid fa-lg fa-pen-to-square"></i>
+              </button>
+              <button class="delete-btn" type="button">
+                <i class="fa-solid fa-lg fa-trash-can"></i>
+              </button>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <div class="expenses-summary">
+        <button class="clear-btn" type="button">clear all</button>
+        <p id="expense-total">Total: $565 / month, or $1954 / year</p>
+      </div>
+    </section>
+    <!-- javascript -->
+    <script src="app.js"></script>
+  </body>
+</html>
