@@ -14,6 +14,8 @@ form.addEventListener("submit", addExpense);
 clearBtn.addEventListener("click", clearAll);
 
 let isEditing = false;
+let tempMonthlyTotal = 0;
+let tempYearlyTotal = 0;
 let currentId = "";
 let currentEleTitle;
 let currentEleAmount;
@@ -65,6 +67,7 @@ function deleteExpense(e) {
   list.removeChild(element);
   console.log(id);
   deleteFromLocal(id);
+  updateTotal();
   reset();
 }
 
@@ -128,6 +131,7 @@ function clearAll() {
   }
   reset();
   localStorage.removeItem("expenses");
+  updateTotal();
 }
 //
 function createExpense(id, title, amount, selectedTimePeriod) {
@@ -168,25 +172,26 @@ function calcMonthlyTotal() {
       }
     });
   }
+  tempMonthlyTotal = monthlyTotal;
+  tempYearlyTotal = monthlyTotal * 12;
   return monthlyTotal;
 }
-//
+
 function updateTotal() {
+  let oldMonthlyTotal = tempMonthlyTotal;
+  let oldYearlyTotal = tempYearlyTotal;
   let monthlyTotal = calcMonthlyTotal();
   let yearlyTotal = monthlyTotal * 12;
-  total.innerText = `Total: $${monthlyTotal.toFixed(
-    2
-  )} / month, or $${yearlyTotal.toFixed(2)} / year`;
+  animateValue(
+    total,
+    oldMonthlyTotal,
+    monthlyTotal,
+    oldYearlyTotal,
+    yearlyTotal,
+    500
+  );
 }
-//
-// function alterTimePeriodText(timePeriod) {
-//   if (timePeriod == "monthly") {
-//     return "month";
-//   } else {
-//     return "year";
-//   }
-// }
-//
+
 function deleteFromLocal(id) {
   console.log(id);
   let expenses = getLocalData();
@@ -212,4 +217,31 @@ function editLocalData(id, expenseTitle, expenseAmount, selectedTimePeriod) {
     return expense;
   });
   localStorage.setItem("expenses", JSON.stringify(expenses));
+}
+
+//
+function animateValue(
+  obj,
+  monthlyStart,
+  monthlyEnd,
+  yearlyStart,
+  yearlyEnd,
+  duration
+) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    obj.innerText = `Total: $${(
+      progress * (monthlyEnd - monthlyStart) +
+      monthlyStart
+    ).toFixed(2)} / month, or $${(
+      progress * (yearlyEnd - yearlyStart) +
+      yearlyStart
+    ).toFixed(2)} / year`;
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
 }
